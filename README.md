@@ -1,6 +1,6 @@
 # Termux environment for Docker/Podman.
 
-A [Termux](https://termux.com) i686 (x86_64) environment packaged into Docker image.
+A [Termux](https://termux.com) environment packaged into Docker image.
 Environment doesn't have Android runtime components, so certain things will
 not be available (DalvikVM, OpenSLES, etc...).
 
@@ -38,6 +38,10 @@ Running image:
 ## Known issues
 
 There a number of known issues which may not be resolved:
+
+* ARM containers may require a custom seccomp profile to remove restrictions from
+  `personality()` system call. Whereas Docker Hub contains prebuilt ARM image, it
+  is outdated and won't receive updates anymore.
 
 * DNS: Docker image has to use a static DNS resolver through `/system/etc/hosts`.
   You can regenerate this file by editing `/system/etc/static-dns-hosts.txt` and
